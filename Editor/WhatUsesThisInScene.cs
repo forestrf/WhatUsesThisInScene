@@ -1,19 +1,26 @@
 ﻿using System.Collections.Generic;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.SceneManagement;
+using UnityEditor.Experimental.SceneManagement;
 
 public class WhatUsesThisInScene {
 	[MenuItem("GameObject/What Uses This In The Scene", false, 10)]
 	[MenuItem("CONTEXT/Component/What Uses This In The Scene", false, 10)]
 	static void Execute() {
-		var allComponents = GameObject.FindObjectsOfType<Component>();
-
-		List<Object> thisObj = new List<Object>();
+		Component[] allComponents =
+			(PrefabStageUtility.GetCurrentPrefabStage() != null ?
+			PrefabStageUtility.GetCurrentPrefabStage().scene :
+			EditorSceneManager.GetActiveScene()).GetRootGameObjects().SelectMany(x => x.GetComponentsInChildren<Component>()).ToArray();
 
 		int iCount = 0;
 
 		var selectedObj = Selection.activeObject;
 		string selected = selectedObj.name;
+
+		List<Object> thisObj = new List<Object>() { selectedObj };
 
 		Debug.Log($"<color=#5C93B9>What uses <b>{selected}</b>?</color>", selectedObj);
 
