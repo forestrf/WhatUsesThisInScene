@@ -1,0 +1,23 @@
+{
+    "name": "com.ashkatchap.WhatUsesThisInScene",
+    "displayName": "What uses this in the scene",
+    "description": "Search every Serializable field on all the scene's objects for a reference to another UnityObject.",
+    "unity": "2019.4",
+    "version": "1.0.0",
+    "category": "editor extensions",
+    "dependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/forestrf/WhatUsesThisInScene.git"
+    },
+    "author": {
+        "name": "Andrés Leone",
+        "email": "forestrf@gmail.com",
+        "url": "https://github.com/forestrf/WhatUsesThisInScene"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/forestrf/WhatUsesThisInScene/issues"
+    },
+    "homepage": "https://github.com/forestrf/WhatUsesThisInScene#readme"
+}
