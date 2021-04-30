@@ -10,7 +10,7 @@ public class WhatUsesThisInScene {
 	[MenuItem("GameObject/What uses this in the scene?", false, 10)]
 	[MenuItem("CONTEXT/Component/What uses this in the scene?", false, 10)]
 	[MenuItem("Assets/What uses this in the scene?")]
-	static void Execute() {
+	static void Execute(MenuCommand command) {
 		Component[] allComponents =
 			(PrefabStageUtility.GetCurrentPrefabStage() != null ?
 			PrefabStageUtility.GetCurrentPrefabStage().scene :
@@ -18,7 +18,7 @@ public class WhatUsesThisInScene {
 
 		int iCount = 0;
 
-		var selectedObj = Selection.activeObject;
+		var selectedObj = command.context;
 		string selected = selectedObj.name;
 
 		List<Object> thisObj = new List<Object>() { selectedObj };
