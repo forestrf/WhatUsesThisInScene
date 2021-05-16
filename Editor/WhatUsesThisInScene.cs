@@ -9,7 +9,7 @@ using UnityEditor.Experimental.SceneManagement;
 public class WhatUsesThisInScene {
 	[MenuItem("GameObject/What uses this in the scene?", false, 10)]
 	[MenuItem("CONTEXT/Component/What uses this in the scene?", false, 10)]
-	[MenuItem("Assets/What uses this in the scene?")]
+	[MenuItem("Assets/What uses this in the scene?", false)]
 	static void Execute(MenuCommand command) {
 		Component[] allComponents =
 			(PrefabStageUtility.GetCurrentPrefabStage() != null ?
@@ -19,6 +19,7 @@ public class WhatUsesThisInScene {
 		int iCount = 0;
 
 		var selectedObj = command.context;
+		if (selectedObj == null) selectedObj = Selection.activeObject;
 		string selected = selectedObj.name;
 
 		List<Object> thisObj = new List<Object>() { selectedObj };
